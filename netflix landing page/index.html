@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- FONT AWSOME-->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>Netflix | Landing Page</title>
+  </head>
+
+  <body>
+    <header>
+      <!-- LOGO -->
+      <a href="#" class="logo"><img src="./img and video/logo.png" alt="" /></a>
+
+      <!-- NAV -->
+      <ul class="navigation">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">TV Shows</a></li>
+        <li><a href="#">Movies</a></li>
+        <li><a href="#">Latest</a></li>
+        <li><a href="#">My List</a></li>
+      </ul>
+
+      <!-- SEARCH -->
+      <div class="search">
+        <input type="text" placeholder="Search" />
+        <i class="fas fa-search"></i>
+      </div>
+    </header>
+
+    <!-- BANNER -->
+    <div class="banner">
+      <img src="./img and video/bg.jpg" class="bg" />
+      <div class="content">
+        <img src="./img and video/name.png" class="movieTitle" />
+        <h4>
+          <span>2020</span>
+          <span><a>12+</a></span>
+          <span>1h 55min</span>
+          <span>Action</span>
+        </h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
+          soluta sapiente facilis inventore? Veniam doloribus expedita eius
+          similique cumque, reiciendis assumenda esse delectus dolorum nesciunt
+          quo, illo voluptas placeat veritatis!
+        </p>
+        <div class="buttons">
+          <a href="#"><i class="fas fa-play" aria-hidden="true"></i>Play</a>
+          <a href="#" aria-hidden="true"><i class="fas fa-plus"></i>My List</a>
+        </div>
+      </div>
+      <a class="play" onclick="toggleVideo()"
+        ><img src="./img and video/play.png" />Watch Trailer</a
+      >
+    </div>
+
+    <div class="trialer">
+      <video
+        src="./img and video/Pexels Videos 1321208.mp4"
+        controls="true"
+        autoplay="true"
+      ></video>
+      <img
+        src="./img and video/close.png"
+        class="close"
+        onclick="toggleVideo()"
+      />
+    </div>
+
+    <script>
+      const trialer = document.querySelector(".trialer");
+      const video = document.querySelector("video");
+
+      function toggleVideo() {
+        trialer.classList.toggle("active");
+        video.currentTime = 0;
+      }
+    </script>
+  </body>
+</html>
