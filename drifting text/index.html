@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      body {
+        background: linear-gradient(hsl(212, 24%, 29%), hsl(212, 24%, 60%));
+        min-height: 100vh;
+        color: white;
+        overflow: hidden;
+      }
+
+      .hero {
+        display: grid;
+        place-items: center;
+        height: 100vh;
+      }
+
+      h1 {
+        font-size: 10vw;
+      }
+      h4 {
+        font-size: 5vw;
+      }
+
+      h1,
+      h4 {
+        position: absolute;
+        display: flex;
+      }
+
+      span {
+        margin: 20px;
+        animation: drifting 15s linear infinite forwards;
+        animation-delay: calc(var(--position) * 500ms);
+        transition: transform 300ms;
+      }
+
+      @keyframes drifting {
+        25% {
+          transform: translate(calc(var(--position) * 30px), 0);
+        }
+        50% {
+          transform: translate(0, calc(var(--position) * -30px));
+        }
+        75% {
+          transform: translate(
+            calc(var(--position) * 22px),
+            calc(var(--position) * -22px)
+          );
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+
+      @keyframes resetPosition {
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+    </style>
+
+    <title>drifting</title>
+  </head>
+
+  <body>
+    <div class="hero">
+      <h1>
+        <span style="--position: 3">Hi,</span>
+        <span style="--position: 5">I'm</span>
+        <span style="--position: -5.7">Alvin.</span>
+      </h1>
+      <h4>
+        <span style="--position: 6">A</span>
+        <span style="--position: -4">Prospective</span>
+        <span style="--position: 1">Frontend</span>
+        <span style="--position: 6">Web</span>
+        <span style="--position: -5">Programmer</span>
+      </h4>
+    </div>
+  </body>
+</html>
