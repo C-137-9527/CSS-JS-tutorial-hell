@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>card hover effect 2</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background-color: #131313;
+      }
+      .container {
+        position: relative;
+      }
+      .card {
+        position: relative;
+        width: 320px;
+        height: 450px;
+        background: #232323;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #9bdc28;
+        clip-path: circle(150px at 80% 20%);
+        transition: 0.5s ease-in-out;
+      }
+      .card:hover::before {
+        clip-path: circle(300px at 80% -20%);
+      }
+      .card::after {
+        content: "NIKE";
+        position: absolute;
+        top: 30%;
+        left: -20%;
+        font-size: 12rem;
+        font-weight: 800;
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .imgBX {
+        display: grid;
+        place-items: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 999;
+        transition: 0.5s;
+      }
+      .card:hover .imgBX {
+        top: 0;
+        transform: translateY(0);
+      }
+      img {
+        transform: rotate(-25deg);
+        width: 70%;
+      }
+      .contentBX {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        text-align: center;
+        transition: 1s;
+        z-index: 10;
+      }
+      .card:hover .contentBX {
+        height: 210px;
+      }
+      h2 {
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: #fff;
+      }
+      .size,
+      .colors {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 20px;
+        transition: 0.5s;
+      }
+      .size h3,
+      .colors h3 {
+        color: white;
+        font-weight: 300;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-right: 10px;
+      }
+      .size span,
+      .colors span {
+        width: 26px;
+        height: 26px;
+        text-align: center;
+        line-height: 26px;
+        font-size: 14px;
+        display: inline-block;
+        color: #111;
+        background-color: white;
+        margin: 0 5px;
+        transition: 0.5s;
+        border-radius: 4px;
+      }
+      .size span:hover,
+      .colors span:hover {
+        background: #9bdc28;
+      }
+      .colors span {
+        width: 20px;
+        height: 20px;
+        background: #ff0;
+        border-radius: 50%;
+        margin: 0 5px;
+        cursor: pointer;
+      }
+      .colors span:nth-child(2) {
+        background: #9bdc28;
+      }
+      .colors span:nth-child(3) {
+        background: #03a9f4;
+      }
+      a {
+        display: inline-block;
+        padding: 10px 20px;
+        background: white;
+        border-radius: 4px;
+        color: black;
+        text-decoration: none;
+        font-weight: 600;
+        opacity: 0;
+        margin-top: 10px;
+        transform: translateY(50px);
+        transition: 0.5s;
+      }
+      .card:hover a {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.5s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="imgBX">
+          <img
+            src="http://pngimg.com/uploads/running_shoes/running_shoes_PNG5816.png"
+            alt=""
+          />
+        </div>
+        <div class="contentBX">
+          <h2>Nike Shoes</h2>
+          <div class="size">
+            <h3>Size:</h3>
+            <span>7</span> <span>8</span> <span>9</span> <span>10</span>
+          </div>
+          <div class="colors">
+            <h3>Colors:</h3>
+            <span></span> <span></span><span></span>
+          </div>
+          <a href="#">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
