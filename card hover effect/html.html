@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>card hover effect</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background: #16384c;
+      }
+      .card {
+        position: relative;
+        display: grid;
+        place-items: center;
+        max-width: 300px;
+        background: #fff;
+        margin: 30px 10px;
+        padding: 20px 15px;
+        box-shadow: 0 5px 202px rgba(0, 0, 0, 0.5);
+        transition: 0.3s ease-in-out;
+      }
+      .imgBX {
+        position: relative;
+        width: 260px;
+        top: -60px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+      }
+      img {
+        max-width: 100%;
+        border-radius: 4px;
+      }
+      .content {
+        position: relative;
+        margin-top: -160px;
+        padding: 10px 15px;
+        text-align: center;
+        opacity: 0;
+        transition: 0.3s ease-in-out;
+      }
+      .card:hover .content {
+        opacity: 1;
+        margin-top: -40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <div class="imgBX">
+        <img
+          src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+          alt=""
+        />
+      </div>
+      <div class="content">
+        <h2>Card</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
+          accusamus consequatur at impedit magni id et in, neque suscipit
+          officiis sequi voluptates, provident ab exercitationem.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
