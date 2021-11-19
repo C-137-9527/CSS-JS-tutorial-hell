@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>reviews</title>
+  </head>
+
+  <body>
+    <section>
+      <h1></h1>
+      <p></p>
+      <button>previous</button>
+      <button>next</button>
+    </section>
+
+    <script>
+      const h1 = document.querySelector("h1");
+      const p = document.querySelector("p");
+      const buttons = document.querySelectorAll("button");
+
+      const lists = [
+        { name: "person1", review: "lorem1" },
+        { name: "person2", review: "lorem2" },
+        { name: "person3", review: "lorem3" },
+      ];
+
+      let i = 0;
+      h1.textContent = lists[i].name;
+      p.textContent = lists[i].review;
+
+      function setContent(btn) {
+        const btnText = btn.textContent;
+        if (btnText === "next") {
+          i++;
+          i === lists.length ? (i = 0) : "";
+        } else if (btnText === "previous") {
+          i--;
+          i < 0 ? (i = lists.length - 1) : "";
+        }
+
+        h1.textContent = lists[i].name;
+        p.textContent = lists[i].review;
+      }
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => setContent(btn));
+      });
+    </script>
+  </body>
+</html>
