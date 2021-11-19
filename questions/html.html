@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>questions</title>
+
+    <style>
+      .red {
+        background: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <article>
+      <div>question</div>
+      <button>change color</button>
+      <div class="answer">answer1</div>
+    </article>
+    <br />
+    <article>
+      <div>question</div>
+      <button>change color</button>
+      <div class="answer">answer2</div>
+    </article>
+    <br />
+    <article>
+      <div>question</div>
+      <button>change color</button>
+      <div class="answer">answer3</div>
+    </article>
+
+    <script>
+      const articles = [...document.querySelectorAll("article")];
+
+      function changeColor(article) {
+        const button = article.querySelector("button");
+        const answer = article.querySelector(".answer");
+
+        button.addEventListener("click", () => {
+          answer.classList.toggle("red");
+        });
+      }
+
+      articles.map((article) => {
+        changeColor(article);
+      });
+    </script>
+  </body>
+</html>
