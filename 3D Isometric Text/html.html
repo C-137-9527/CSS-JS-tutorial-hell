@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Isometric Text</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #f1f1f1;
+        overflow: hidden;
+      }
+      #text {
+        position: relative;
+        color: white;
+        font-weight: 700;
+        font-size: 5rem;
+        letter-spacing: 2px;
+        text-align: center;
+        transform: rotate(-28deg) skew(25deg);
+      }
+      #text::before {
+        content: attr(data-text);
+        position: absolute;
+        top: 40px;
+        left: -80px;
+        color: rgba(0, 0, 0, 0.3);
+        text-shadow: none;
+        filter: blur(8px);
+        z-index: -1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="text" data-text="CSS 3D Isometric Text">CSS 3D Isometric Text</div>
+
+    <script type="text/javascript">
+      const text = document.getElementById("text");
+      let shadow = "";
+      for (let i = 0; i < 30; i++) {
+        shadow += (shadow ? "," : "") + -i * 1 + "px " + i * 1 + "px 0 #01ded3";
+      }
+      text.style.textShadow = shadow;
+    </script>
+  </body>
+</html>
