@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wooden text</title>
+
+    <style>
+      body {
+        margin: 0%;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: sans-serif;
+        background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMltNaCxYP0mDbAJHSPB0OFJzbQFDMwOl4Dg&usqp=CAU");
+        background-attachment: fixed;
+      }
+      h1 {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        font-size: 10rem;
+        text-transform: uppercase;
+        text-align: center;
+        background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMltNaCxYP0mDbAJHSPB0OFJzbQFDMwOl4Dg&usqp=CAU");
+        background-attachment: fixed;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      h1::before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-shadow: -5px 5px 20px black, -10px 10px 30px black,
+          -20px 15px 40px black, -25px 20px 50px black;
+        z-index: -1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 data-text="Wooden Text">Wooden Text</h1>
+  </body>
+</html>
