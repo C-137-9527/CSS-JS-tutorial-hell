@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>colorful rain</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #000;
+        overflow: hidden;
+        height: 100vh;
+      }
+      i {
+        position: absolute;
+        height: 200px;
+        background: linear-gradient(transparent, white);
+        border-radius: 0 5px;
+        animation: animate 5s linear infinite;
+      }
+      i:nth-child(3n + 1) {
+        background: linear-gradient(transparent, #0ff);
+      }
+      i:nth-child(3n + 2) {
+        background: linear-gradient(transparent, #0f0);
+      }
+      i:nth-child(3n + 3) {
+        background: linear-gradient(transparent, #f00);
+      }
+
+      @keyframes animate {
+        0% {
+          transform: translateY(-200px);
+        }
+        100% {
+          transform: translateY(calc(100vh + 200px));
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      function rain() {
+        const body = document.body;
+        let i = 0;
+        while (i < 100) {
+          const drop = document.createElement("i");
+          const dropStyle = drop.style;
+
+          dropStyle.width = Math.random() * 5 + 0.2 + "px";
+
+          dropStyle.left = Math.floor(Math.random() * window.innerWidth) + "px";
+
+          dropStyle.animationDelay = Math.random() * -20 + "s";
+
+          dropStyle.animationDuration = Math.random() * 5 + "s";
+
+          body.append(drop);
+          i++;
+        }
+      }
+      rain();
+    </script>
+  </body>
+</html>
