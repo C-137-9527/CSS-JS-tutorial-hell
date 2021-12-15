@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Blob SVG</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      section {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #250821;
+      }
+      .blob {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+      }
+      .blob:nth-child(2) {
+        filter: blur(50px);
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <div class="blob">
+        <svg
+          viewBox="0 0 500 500"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="100%"
+          id="blobSvg"
+        >
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color: rgb(255, 95, 109)"></stop>
+              <stop offset="100%" style="stop-color: rgb(255, 195, 113)"></stop>
+            </linearGradient>
+          </defs>
+          <path fill="url(#gradient)">
+            <animate
+              attributeName="d"
+              dur="5000ms"
+              repeatCount="indefinite"
+              values="M399,345Q359,440,253,434Q147,428,110,339Q73,250,103,148.5Q133,47,231.5,79Q330,111,384.5,180.5Q439,250,399,345Z; 
+              
+              M406,318.5Q329,387,246.5,392.5Q164,398,95.5,324Q27,250,79,147.5Q131,45,230.5,78Q330,111,406.5,180.5Q483,250,406,318.5Z;
+              
+              M412,321.5Q333,393,245,402Q157,411,90,330.5Q23,250,98.5,184Q174,118,259,102.5Q344,87,417.5,168.5Q491,250,412,321.5Z;
+              
+              M369,322.5Q334,395,234,422.5Q134,450,97.5,350Q61,250,114.5,179Q168,108,250,108Q332,108,368,179Q404,250,369,322.5Z;
+              
+              M399,345Q359,440,253,434Q147,428,110,339Q73,250,103,148.5Q133,47,231.5,79Q330,111,384.5,180.5Q439,250,399,345Z"
+            ></animate>
+          </path>
+        </svg>
+      </div>
+      <div class="blob">
+        <svg
+          viewBox="0 0 500 500"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="100%"
+          id="blobSvg"
+        >
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color: rgb(255, 95, 109)"></stop>
+              <stop offset="100%" style="stop-color: rgb(255, 195, 113)"></stop>
+            </linearGradient>
+          </defs>
+          <path fill="url(#gradient)">
+            <animate
+              attributeName="d"
+              dur="5000ms"
+              repeatCount="indefinite"
+              values="M399,345Q359,440,253,434Q147,428,110,339Q73,250,103,148.5Q133,47,231.5,79Q330,111,384.5,180.5Q439,250,399,345Z; 
+              
+              M406,318.5Q329,387,246.5,392.5Q164,398,95.5,324Q27,250,79,147.5Q131,45,230.5,78Q330,111,406.5,180.5Q483,250,406,318.5Z;
+              
+              M412,321.5Q333,393,245,402Q157,411,90,330.5Q23,250,98.5,184Q174,118,259,102.5Q344,87,417.5,168.5Q491,250,412,321.5Z;
+              
+              M369,322.5Q334,395,234,422.5Q134,450,97.5,350Q61,250,114.5,179Q168,108,250,108Q332,108,368,179Q404,250,369,322.5Z;
+              
+              M399,345Q359,440,253,434Q147,428,110,339Q73,250,103,148.5Q133,47,231.5,79Q330,111,384.5,180.5Q439,250,399,345Z"
+            ></animate>
+          </path>
+        </svg>
+      </div>
+    </section>
+  </body>
+</html>
