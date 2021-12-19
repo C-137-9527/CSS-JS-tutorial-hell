@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>local storage</title>
+  </head>
+
+  <body>
+    <h1></h1>
+    <input type="text" />
+
+    <script>
+      const h1 = document.querySelector("h1");
+      const obj = { name: "name" };
+
+      localStorage.setItem("test", JSON.stringify(obj));
+
+      if (localStorage.getItem("test") !== null) {
+        const name = JSON.parse(localStorage.getItem("test"));
+        h1.textContent = name.name;
+      }
+    </script>
+  </body>
+</html>
