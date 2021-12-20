@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const func = (p) => {
+        console.log(p);
+        return (p) => {
+          console.log(p);
+          return (p) => {
+            console.log(p);
+          };
+        };
+      };
+      func(1)(2)(3);
+
+      const func1 = (a) => {
+        return (b) => (c) => (d) => console.log(d);
+      };
+      func1(1)(2)(3)(4);
+    </script>
+  </body>
+</html>
