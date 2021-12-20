@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>modal</title>
+
+    <style>
+      .modal {
+        display: none;
+        position: absolute;
+        top: 0;
+      }
+      .showModal {
+        display: initial;
+      }
+      .backdrop {
+        display: grid;
+        place-items: center;
+        width: 100vw;
+        height: 100vh;
+        background: #000;
+        opacity: 0.5;
+      }
+      .overlay {
+        width: 300px;
+        height: 300px;
+        line-height: 300px;
+        text-align: center;
+        background: gray;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>show modal</h1>
+
+    <div class="modal">
+      <div class="backdrop">
+        <h1 class="overlay">modal</h1>
+        <button class="close">close</button>
+      </div>
+    </div>
+
+    <script>
+      const h1 = document.querySelector("h1");
+      const modal = document.querySelector(".modal");
+      const close = document.querySelector(".close");
+
+      h1.addEventListener("click", () => {
+        modal.classList.add("showModal");
+      });
+
+      close.addEventListener("click", () => {
+        modal.classList.remove("showModal");
+      });
+    </script>
+  </body>
+</html>
