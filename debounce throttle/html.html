@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>throtle and debounce</title>
+  </head>
+
+  <body>
+    <button>throttle</button>
+    <input />
+
+    <script>
+      // THROTTLE
+      const button = document.querySelector("button");
+
+      let i = "allow";
+
+      const throttle = () => {
+        if (i === "forbid") return;
+
+        i = "forbid";
+        setTimeout(() => {
+          console.log("throttle");
+          i = "allow";
+        }, 1000);
+      };
+
+      button.addEventListener("click", throttle);
+
+      //   DEBOUNCE
+      const input = document.querySelector("input");
+
+      let timeout;
+
+      const debounce = (e) => {
+        clearTimeout(timeout);
+
+        timeout = setTimeout(() => {
+          console.log(e.target.value);
+        }, 1000);
+      };
+
+      input.addEventListener("keydown", (e) => debounce(e));
+    </script>
+  </body>
+</html>
