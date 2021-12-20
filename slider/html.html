@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>slider</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .slider {
+        position: relative;
+        width: 500px;
+        height: 300px;
+        background-position: center;
+        background-size: cover;
+      }
+      .prevBTN {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .nextBTN {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 500px;
+      }
+      .dot {
+        width: 30px;
+        height: 30px;
+        background: lightgray;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="slider">
+      <button class="prevBTN">prev</button>
+      <button class="nextBTN">next</button>
+    </div>
+
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <script>
+      const slider = document.querySelector(".slider");
+      const prevBTN = document.querySelector(".prevBTN");
+      const nextBTN = document.querySelector(".nextBTN");
+      const dots = document.querySelectorAll(".dot");
+
+      const images = [
+        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+        "https://images.ctfassets.net/hrltx12pl8hq/61DiwECVps74bWazF88Cy9/2cc9411d050b8ca50530cf97b3e51c96/Image_Cover.jpg?fit=fill&w=480&h=270",
+        "https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg",
+      ];
+
+      // CHANGE SLIDE
+      const slideChange = () => {
+        slider.style.backgroundImage = `url(${images[i]})`;
+        [...dots].map((dot) => (dot.style.background = "lightgray"));
+        [...dots][i].style.background = "gray";
+      };
+
+      //   DEFAULT
+      i = 0;
+      slideChange();
+
+      //   SLIDE BACK
+      prevBTN.addEventListener("click", () => {
+        i--;
+        if (i < 0) i = images.length - 1;
+        slideChange();
+      });
+
+      //   SLIDE FORWARD
+      nextBTN.addEventListener("click", () => {
+        i++;
+        if (i === images.length) i = 0;
+        slideChange();
+      });
+    </script>
+  </body>
+</html>
