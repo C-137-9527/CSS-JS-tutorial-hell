@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frosted Glass</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      section {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: url("https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&w=1000&q=80")
+          no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        overflow: hidden;
+      }
+      h2 {
+        font-size: 5rem;
+        color: white;
+        pointer-events: none;
+        text-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      }
+      .glass {
+        position: absolute;
+        pointer-events: none;
+        width: 300px;
+        height: 300px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        background: transparent;
+        backdrop-filter: blur(10px);
+        transition: 300ms;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <h2>Frosted Glass</h2>
+      <div class="glass"></div>
+    </section>
+
+    <script>
+      window.addEventListener("mousemove", function (e) {
+        const glass = document.querySelector(".glass");
+
+        glass.style.left = e.offsetX + "px";
+        glass.style.top = e.offsetY + "px";
+      });
+    </script>
+  </body>
+</html>
