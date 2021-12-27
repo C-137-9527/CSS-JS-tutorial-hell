@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal Image</title>
+
+    <style>
+      .modal {
+        display: none;
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        backdrop-filter: blur(10px);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .modal img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+
+  <body>
+    <img
+      src="https://images.ctfassets.net/hrltx12pl8hq/3MbF54EhWUhsXunc5Keueb/60774fbbff86e6bf6776f1e17a8016b4/04-nature_721703848.jpg?fit=fill&w=480&h=270"
+      alt="abc"
+    />
+
+    <div class="modal">
+      <img src="" alt="" />
+    </div>
+
+    <script>
+      const modal = document.querySelector(".modal");
+      const modalImage = document.querySelector(".modal img");
+      const img = document.querySelector("img");
+
+      img.addEventListener("click", function (e) {
+        modalImage.src = e.target.src;
+        modal.style.display = "initial";
+      });
+
+      modal.addEventListener("click", function (e) {
+        if (e.target.tagName !== "IMG") modal.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
