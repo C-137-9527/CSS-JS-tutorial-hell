@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>responsive grid</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: sans-serif;
+      }
+      img {
+        max-width: 100%;
+      }
+      .container {
+        max-width: 100rem;
+        margin-inline: auto;
+        padding-inline: 2rem;
+      }
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+      }
+      .card {
+        margin: 1rem;
+        aspect-ratio: 1/1.5;
+      }
+      .card_img {
+        aspect-ratio: 1/1;
+        object-fit: cover;
+      }
+      .stacked {
+        display: grid;
+      }
+      .stacked > * {
+        grid-column: 1/2;
+        grid-row: 1/2;
+      }
+      .card_content {
+        background: white;
+        align-self: flex-end;
+        margin: 0.5rem 0.5rem 2rem;
+        padding: 0.5rem;
+        box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 0.1);
+      }
+      .card.featured {
+        grid-row: span 2;
+        grid-column: span 2;
+      }
+      .card.featured .card_img {
+        aspect-ratio: 1 / 1.25;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="product-grid">
+        <!-- CARD 1 -->
+        <div class="card stacked featured">
+          <img
+            src="https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg"
+            alt=""
+            class="card_img"
+          />
+          <div class="card_content">
+            <h2 class="card_title">title</h2>
+            <p class="card_price">1.99</p>
+            <p class="card_description">lorem</p>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="card stacked">
+          <img
+            src="https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg"
+            alt=""
+            class="card_img"
+          />
+          <div class="card_content">
+            <h2 class="card_title">title</h2>
+            <p class="card_price">1.99</p>
+            <p class="card_description">lorem</p>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="card stacked">
+          <img
+            src="https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg"
+            alt=""
+            class="card_img"
+          />
+          <div class="card_content">
+            <h2 class="card_title">title</h2>
+            <p class="card_price">1.99</p>
+            <p class="card_description">lorem</p>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="card stacked">
+          <img
+            src="https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg"
+            alt=""
+            class="card_img"
+          />
+          <div class="card_content">
+            <h2 class="card_title">title</h2>
+            <p class="card_price">1.99</p>
+            <p class="card_description">lorem</p>
+          </div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="card stacked">
+          <img
+            src="https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg"
+            alt=""
+            class="card_img"
+          />
+          <div class="card_content">
+            <h2 class="card_title">title</h2>
+            <p class="card_price">1.99</p>
+            <p class="card_description">lorem</p>
+          </div>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="card stacked">
+          <img
+            src="https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg"
+            alt=""
+            class="card_img"
+          />
+          <div class="card_content">
+            <h2 class="card_title">title</h2>
+            <p class="card_price">1.99</p>
+            <p class="card_description">lorem</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
