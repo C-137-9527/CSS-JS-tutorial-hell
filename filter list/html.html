@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>filter list</title>
+  </head>
+
+  <body>
+    <input type="text" />
+    <ul>
+      <li>html</li>
+      <li>css</li>
+      <li>javascript</li>
+      <li>python</li>
+    </ul>
+
+    <script>
+      const input = document.querySelector("input");
+      const lists = [...document.querySelectorAll("li")];
+
+      input.addEventListener("keydown", (e) => {
+        setTimeout(() => {
+          lists.map((list) => {
+            if (!list.textContent.includes(e.target.value)) {
+              list.style.display = "none";
+            } else {
+              list.style.display = "initial";
+            }
+          });
+        }, 100);
+      });
+    </script>
+  </body>
+</html>
