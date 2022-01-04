@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tabs</title>
+
+    <style>
+      .tab {
+        cursor: pointer;
+      }
+      .tab:first-of-type {
+        background: red;
+      }
+      .paris,
+      .tokyo {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="tabsContainer">
+      <div>
+        <span class="tab">lodon</span>
+        <span class="tab">paris</span>
+        <span class="tab">tokyo</span>
+      </div>
+      <div>
+        <p class="lodon content">lodon</p>
+        <p class="paris content">paris</p>
+        <p class="tokyo content">tokyo</p>
+      </div>
+    </div>
+
+    <script>
+      const tabsContainer = document.querySelector(".tabsContainer");
+
+      tabsContainer.addEventListener("click", (e) => {
+        const target = e.target;
+
+        if (!target.classList.contains("tab")) return;
+
+        const tabs = document.querySelectorAll(".tab");
+        tabs.forEach((tab) => {
+          if (tab === target) {
+            target.style.background = "red";
+          } else {
+            tab.style.background = "none";
+          }
+        });
+
+        const contents = document.querySelectorAll(".content");
+        contents.forEach((content) => {
+          if (content.classList.contains(target.textContent)) {
+            content.style.display = "initial";
+          } else {
+            content.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
