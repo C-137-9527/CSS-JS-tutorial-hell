@@ -2,5 +2,5 @@
 
 mini tutorial projects for practice only.
 
-css and js all written in HTML file.
+html, css and js all in one single HTML file.
  
