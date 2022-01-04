@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tooltip</title>
+
+    <style>
+      p {
+        position: relative;
+      }
+      p::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: -1rem;
+        left: 0;
+        background: lightgray;
+        opacity: 0;
+        transition: opacity 300ms;
+      }
+      p:hover::after {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p data-tooltip="this is a tooltip">hover to show tooltip</p>
+  </body>
+</html>
