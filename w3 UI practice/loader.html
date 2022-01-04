@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>loader</title>
+
+    <style>
+      .loader {
+        display: grid;
+        place-items: center;
+        width: 100px;
+        height: 100px;
+        background: conic-gradient(blue 0.25turn, white 0.25turn);
+        border-radius: 50%;
+        border: 1px solid pink;
+        animation: spin 2s infinite linear;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .loader::before {
+        content: "";
+        width: 80px;
+        height: 80px;
+        background: white;
+        border-radius: 50%;
+        border: 1px solid pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="loader"></div>
+  </body>
+</html>
