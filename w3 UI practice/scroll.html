@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>scroll</title>
+
+    <style>
+      body {
+        height: 200vh;
+        background: green;
+      }
+      button {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        font-size: 3rem;
+      }
+      .navContainer {
+        width: 100%;
+        height: 30vh;
+        background: red;
+      }
+      nav {
+        position: sticky;
+        top: 100px;
+        background: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button>top</button>
+
+    <div class="navContainer">
+      <nav>navbar</nav>
+    </div>
+
+    <script>
+      const btn = document.querySelector("button");
+      btn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>
