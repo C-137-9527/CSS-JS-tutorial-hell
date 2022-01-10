@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thunderbolt</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --clr: #5ff436;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background: #000;
+      }
+      .thunderbolt {
+        display: flex;
+      }
+      .shape1 {
+        position: relative;
+        width: 0;
+        height: 0;
+        border-bottom: 60px solid var(--clr);
+        border-left: 30px solid transparent;
+        transform: skewX(-25deg) translate(-50%, -50%);
+      }
+      .shape1::before {
+        content: "";
+        position: absolute;
+        right: -20px;
+        bottom: -100px;
+        width: 0;
+        height: 0;
+        border-top: 60px solid var(--clr);
+        border-right: 30px solid transparent;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="thunderbolt">
+      <div class="shape1"></div>
+    </div>
+  </body>
+</html>
