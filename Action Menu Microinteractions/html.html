@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Action Menu Microinteractions</title>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        background: #000;
+        min-height: 100vh;
+      }
+      .list {
+        display: flex;
+        gap: 8px;
+      }
+      .user {
+        position: relative;
+        background: white;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        padding: 10px;
+        gap: 10px;
+      }
+      .imgBx {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        border-radius: 6px;
+      }
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .details h3 {
+        font-weight: 600;
+        line-height: 1.1rem;
+      }
+      .details p {
+        font-weight: 500;
+        font-size: 0.8rem;
+        color: rgba(0, 0, 0, 0.6);
+      }
+      .navigation {
+        position: relative;
+        width: 40px;
+        height: 70px;
+        background-color: #fff;
+        border-radius: 10px;
+        transition: width 500ms;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+      }
+      .navigation.active {
+        width: 200px;
+        flex-direction: row;
+      }
+      .navigation span {
+        width: 6px;
+        height: 6px;
+        background: #000;
+        border-radius: 50%;
+        transition: 500ms;
+      }
+      .navigation.active span {
+        width: 45px;
+        height: 45px;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+      }
+      .navigation.active span:hover {
+        background: seagreen;
+      }
+      .navigation span i {
+        display: none;
+        color: white;
+        font-size: 1.2rem;
+      }
+      .navigation.active span i {
+        display: initial;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="list">
+      <div class="user">
+        <div class="imgBx">
+          <img
+            src="https://i.pinimg.com/474x/17/7d/30/177d3074f270429523768e9d46e6be8a.jpg"
+            alt=""
+          />
+        </div>
+        <div class="details">
+          <h3>name name</h3>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+        </div>
+      </div>
+      <div class="navigation">
+        <span><i class="fas fa-edit"></i></span>
+        <span><i class="far fa-heart"></i></span>
+        <span><i class="far fa-trash-alt"></i></span>
+      </div>
+    </div>
+
+    <script>
+      const navigation = document.querySelector(".navigation");
+
+      navigation.addEventListener("click", () => {
+        navigation.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
