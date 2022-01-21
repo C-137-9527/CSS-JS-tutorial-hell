@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | NFT preview card component</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #0d1a2d;
+        color: darkgray;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+      }
+      .card {
+        width: 300px;
+        height: 500px;
+        background: #15273f;
+        border-radius: 10px;
+        box-shadow: 0 0 20px #08101d;
+        padding: 15px;
+      }
+      .hero {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+      .eq {
+        object-fit: cover;
+        height: 200px;
+        width: 100%;
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 200px;
+      }
+      .content h3 {
+        color: white;
+      }
+      .content .offer {
+        display: flex;
+        justify-content: space-between;
+      }
+      .content .price {
+        color: turquoise;
+      }
+      footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-top: 1px solid white;
+        padding-top: 10px;
+      }
+      .avatar {
+        width: 40px;
+        height: 40px;
+      }
+      .author span {
+        color: white;
+      }
+      .hero:hover::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(64, 224, 208, 0.5);
+        cursor: pointer;
+      }
+      .content h3:hover,
+      .author span:hover {
+        cursor: pointer;
+        color: turquoise;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <section class="hero">
+        <img class="eq" src="./images/image-equilibrium.jpg" alt="" />
+      </section>
+
+      <main class="content">
+        <h3>Equilibrium #3429</h3>
+        <p>Our Equilibrium collection promotes balance and calm.</p>
+        <p class="offer">
+          <span class="price">0.041 ETH </span> <span>3 days left</span>
+        </p>
+      </main>
+
+      <footer>
+        <img class="avatar" src="./images/image-avatar.png" alt="" />
+        <p class="author">Creation of <span>Jules Wyvern</span></p>
+      </footer>
+    </div>
+  </body>
+</html>
