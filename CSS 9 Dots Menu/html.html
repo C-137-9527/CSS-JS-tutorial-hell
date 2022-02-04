@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 9 Dots Menu</title>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background: #000;
+      }
+      .container {
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        width: 110px;
+        height: 110px;
+        background: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        transition: 300ms;
+      }
+      .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        gap: 5px;
+        padding: 25px;
+        width: 110px;
+        height: 110px;
+      }
+      .button {
+        display: grid;
+        place-items: center;
+        width: 15px;
+        height: 15px;
+        background: white;
+        border-radius: 50%;
+        transition: 300ms;
+      }
+      i {
+        color: white;
+        font-size: 0.6rem;
+        opacity: 0;
+        transition: 300ms;
+      }
+      i:hover {
+        color: green;
+        filter: drop-shadow(0 0 2px #2dfc52) drop-shadow(0 0 5px #2dfc52)
+          drop-shadow(0 0 15px #2dfc52);
+      }
+      i.expand {
+        opacity: 1;
+      }
+
+      /* EXPAND ANIMATION */
+      .container.expand {
+        width: 200px;
+        height: 200px;
+      }
+      .button:nth-child(1).expand {
+        transform: translate(-40px, -40px) scale(3);
+        background: gray;
+      }
+      .button:nth-child(2).expand {
+        transform: translate(0, -40px) scale(3);
+        background: gray;
+        transition-delay: 400ms;
+      }
+      .button:nth-child(3).expand {
+        transform: translate(40px, -40px) scale(3);
+        background: gray;
+        transition-delay: 200ms;
+      }
+      .button:nth-child(4).expand {
+        transform: translate(-40px, 0) scale(3);
+        background: gray;
+        transition-delay: 600ms;
+      }
+      .button:nth-child(5).expand {
+        transform: translate(0, 0) scale(3);
+        background: gray;
+        transition-delay: 800ms;
+      }
+      .button:nth-child(6).expand {
+        transform: translate(40px, 0) scale(3);
+        background: gray;
+        transition-delay: 600ms;
+      }
+      .button:nth-child(7).expand {
+        transform: translate(-40px, 40px) scale(3);
+        background: gray;
+        transition-delay: 200ms;
+      }
+      .button:nth-child(8).expand {
+        transform: translate(0, 40px) scale(3);
+        background: gray;
+        transition-delay: 400ms;
+      }
+      .button:nth-child(9).expand {
+        transform: translate(40px, 40px) scale(3);
+        background: gray;
+      }
+
+      /* SHRINK ANIMATION */
+      .container.shrink {
+        transition-delay: 800ms;
+      }
+      .button:nth-child(2) {
+        transition-delay: 400ms;
+      }
+      .button:nth-child(3) {
+        transition-delay: 200ms;
+      }
+      .button:nth-child(4) {
+        transition-delay: 600ms;
+      }
+      .button:nth-child(5) {
+        transition-delay: 800ms;
+      }
+      .button:nth-child(6) {
+        transition-delay: 600ms;
+      }
+      .button:nth-child(7) {
+        transition-delay: 200ms;
+      }
+      .button:nth-child(8) {
+        transition-delay: 400ms;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container shrink">
+      <div class="menu">
+        <div class="button"><i class="far fa-moon"></i></div>
+        <div class="button"><i class="far fa-comments"></i></div>
+        <div class="button"><i class="far fa-clock"></i></div>
+        <div class="button"><i class="far fa-image"></i></div>
+        <div class="button"><i class="far fa-bell-slash"></i></div>
+        <div class="button"><i class="far fa-gem"></i></div>
+        <div class="button"><i class="far fa-question-circle"></i></div>
+        <div class="button"><i class="far fa-closed-captioning"></i></div>
+        <div class="button"><i class="far fa-address-book"></i></div>
+      </div>
+    </div>
+
+    <script>
+      const container = document.querySelector(".container");
+      const buttons = document.querySelectorAll(".button");
+      const icons = document.querySelectorAll("i");
+
+      container.addEventListener("click", () => {
+        container.classList.toggle("shrink");
+        container.classList.toggle("expand");
+        buttons.forEach((button) => button.classList.toggle("expand"));
+        icons.forEach((icon) => icon.classList.toggle("expand"));
+      });
+    </script>
+  </body>
+</html>
