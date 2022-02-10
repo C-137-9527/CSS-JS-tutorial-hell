@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>time tracking app</title>
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background: rgb(14, 14, 14);
+        color: white;
+      }
+      .card {
+        display: grid;
+        gap: 30px;
+        padding: 50px 20px;
+        background: rgb(13, 19, 35);
+      }
+      .card__user {
+        background: rgb(29, 32, 75);
+        border-radius: 15px;
+        overflow: hidden;
+      }
+      .card__user__info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0 20px;
+        padding: 20px;
+        background: rgb(87, 71, 234);
+        border-radius: 15px;
+      }
+      .card__user__info img {
+        width: 80px;
+        height: 80px;
+        border: 3px solid white;
+        border-radius: 50%;
+      }
+      .card__user__options {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 15px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .card__user__options p:hover {
+        color: white;
+        cursor: pointer;
+      }
+      .card__category {
+        background-repeat: no-repeat;
+        background-position: 100% -20%;
+        padding-top: 3rem;
+        border-radius: 15px;
+        overflow: hidden;
+      }
+      .card__category__summary {
+        background: rgb(29, 32, 75);
+        border-radius: 15px 15px 0 0;
+        padding: 20px;
+      }
+      .card__category__summary div {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+      }
+      .card__category--work {
+        background-color: orange;
+        background-image: url('./images/icon-work.svg');
+      }
+      .card__category--play {
+        background-color: skyblue;
+        background-image: url('./images/icon-play.svg');
+      }
+      .card__category--study {
+        background-color: pink;
+        background-image: url('./images/icon-study.svg');
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <!-- USER -->
+      <div class="card__user">
+        <div class="card__user__info">
+          <img src="./images/image-jeremy.png" alt="avatar" />
+          <div>
+            <p>Report for</p>
+            <h1>Jeremy Robson</h1>
+          </div>
+        </div>
+        <div class="card__user__options">
+          <p class="timeframe">Daily</p>
+          <p class="timeframe">Weekly</p>
+          <p class="timeframe">Monthly</p>
+        </div>
+      </div>
+
+      <!-- WORK -->
+      <div class="card__category card__category--work">
+        <div class="card__category__summary">
+          <h3>Work</h3>
+          <div>
+            <h1></h1>
+            <p>previous: <span></span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLAY -->
+      <div class="card__category card__category--play">
+        <div class="card__category__summary">
+          <h3>Play</h3>
+          <div>
+            <h1></h1>
+            <p>previous: <span></span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- STUDY -->
+      <div class="card__category card__category--study">
+        <div class="card__category__summary">
+          <h3>Study</h3>
+          <div>
+            <h1></h1>
+            <p>previous: <span></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const categories = document.querySelectorAll('.card__category');
+      const timeframes = document.querySelectorAll('.timeframe');
+
+      const getData = async (timeframe) => {
+        const res = await fetch('./data.json');
+        const data = await res.json();
+
+        categories.forEach((category) => {
+          const title = category.querySelector('h3').textContent;
+          const currentTime = category.querySelector('h1');
+          const prevTime = category.querySelector('span');
+
+          data.map((data) => {
+            if (title === data.title) {
+              currentTime.textContent =
+                data.timeframes[timeframe].current + 'hrs';
+              prevTime.textContent =
+                data.timeframes[timeframe].previous + 'hrs';
+            }
+          });
+        });
+      };
+
+      timeframes.forEach((timeframe) => {
+        timeframe.addEventListener('click', (e) => {
+          getData(e.target.textContent.toLowerCase());
+        });
+      });
+
+      getData('weekly');
+    </script>
+  </body>
+</html>
