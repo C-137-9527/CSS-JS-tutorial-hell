@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock, Paper, Scissors game</title>
+  </head>
+
+  <body>
+    <p>your socre: <span class="myScore"></span></p>
+    <p>house score: <span class="houseScore"></span></p>
+
+    <button>rock</button>
+    <button>paper</button>
+    <button>scissors</button>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      const buttons = document.querySelectorAll('button');
+      const myScore = document.querySelector('.myScore');
+      const houseScore = document.querySelector('.houseScore');
+
+      let myCurrentScore = 0;
+      let houseCurrentScore = 0;
+
+      myScore.textContent = myCurrentScore;
+      houseScore.textContent = houseCurrentScore;
+
+      const picks = ['rock', 'paper', 'scissors'];
+
+      const TIE = () => {
+        return 'its a TIE';
+      };
+
+      const WIN = () => {
+        myCurrentScore++;
+        houseCurrentScore--;
+        return 'you have WON';
+      };
+
+      const LOSE = () => {
+        myCurrentScore--;
+        houseCurrentScore++;
+        return 'you have LOST';
+      };
+
+      const roundResult = (myPick, housePick) => {
+        //   ROCK
+        if (myPick === 'rock' && housePick === 'scissors') return WIN();
+
+        if (myPick === 'rock' && housePick === 'rock') return TIE();
+
+        if (myPick === 'rock' && housePick === 'paper') return LOSE();
+
+        // PAPER
+        if (myPick === 'paper' && housePick === 'rock') return WIN();
+
+        if (myPick === 'paper' && housePick === 'paper') return TIE();
+
+        if (myPick === 'paper' && housePick === 'scissors') return LOSE();
+
+        // SCISSORS
+
+        if (myPick === 'scissors' && housePick === 'paper') return WIN();
+
+        if (myPick === 'scissors' && housePick === 'scissors') return TIE();
+        if (myPick === 'scissors' && housePick === 'rock') return LOSE();
+      };
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+          const myPick = e.target.textContent;
+
+          const housePick = picks[Math.floor(Math.random() * 3)];
+
+          const result = roundResult(myPick, housePick);
+
+          myScore.textContent = myCurrentScore;
+          houseScore.textContent = houseCurrentScore;
+
+          alert(`the house picked ${housePick}, ${result}`);
+        });
+      });
+    </script>
+  </body>
+</html>
