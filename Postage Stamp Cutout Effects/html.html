@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Postage Stamp Cutout Effects</title>
+
+    <style>
+      :root {
+        --crl: #4fb6ff;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background: var(--crl);
+      }
+      .box {
+        position: relative;
+        width: 400px;
+        height: 320px;
+        background: white
+          radial-gradient(var(--crl) 0px, var(--crl) 7px, transparent 7px);
+        background-size: 20px 20px;
+        background-position: -10px;
+      }
+      .box::before {
+        content: '';
+        position: absolute;
+        inset: 20px;
+        background: url('https://hips.hearstapps.com/edc.h-cdn.co/assets/17/03/1484686729-eiffel-tour-paris.jpg');
+        background-size: cover;
+        box-shadow: 0 0 0 10px white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box"></div>
+  </body>
+</html>
