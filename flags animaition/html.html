@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flags animation</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body {
+        position: relative;
+        display: grid;
+        place-content: center;
+        min-height: 100vh;
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      li {
+        padding: 5px 20px;
+        border-radius: 10px;
+        list-style: none;
+        text-align: center;
+        color: #333;
+        font-size: 3rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 500ms;
+      }
+      ul:hover li {
+        color: transparent;
+        -webkit-text-stroke: 1px #000;
+      }
+      ul li:hover {
+        color: #333;
+        background: #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      }
+      li::before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        letter-spacing: 100px;
+        z-index: -1;
+        opacity: 0;
+        display: grid;
+        place-items: center;
+        color: rgba(0, 0, 0, 0.1);
+        font-size: 13rem;
+        -webkit-text-stroke: 0px #000;
+        transition: 500ms;
+      }
+      li:hover::before {
+        opacity: 1;
+        letter-spacing: 5px;
+      }
+      li:nth-child(1):hover::before {
+        background: linear-gradient(red 33%, white 33% 66%, red 66%);
+      }
+      li:nth-child(2):hover::before {
+        background: linear-gradient(
+          rgba(3, 88, 181) 50%,
+          rgb(246, 207, 50) 50%
+        );
+      }
+      li:nth-child(3):hover::before {
+        background: linear-gradient(
+          rgba(247, 247, 247) 33%,
+          rgba(3, 88, 181) 33% 66%,
+          rgba(207, 55, 44) 66%
+        );
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul>
+      <li data-text="Canada">Canada</li>
+      <li data-text="Ukraine">Ukraine</li>
+      <li data-text="Russia">Russia</li>
+    </ul>
+  </body>
+</html>
