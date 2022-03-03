@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2d</title>
+
+    <style>
+      /* custom properties */
+      :root {
+        --border: 5px;
+      }
+
+      /* reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background: lightblue;
+      }
+
+      /* character */
+      .character {
+        position: absolute;
+        display: grid;
+        place-items: center;
+      }
+
+      /* head */
+      .head {
+        position: relative;
+
+        /* outlines around the head */
+        box-shadow:
+          /* top  */ 0 -5px 0 0 black,
+          /* bottom */ 0 5px 0 0 black, /* left */ -5px 0 0 0 black,
+          /* right */ 5px 0 0 0 black;
+
+        /* the face */
+        width: 55px;
+        height: 50px;
+        background: white;
+      }
+      /* forehead shadow */
+      .forehead {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 45px;
+        height: 10px;
+        background: hsl(0, 0%, 93%);
+      }
+      /* face shadow */
+      .faceShadow {
+        position: absolute;
+        top: 40%;
+        right: 0;
+        width: 55px;
+        height: 30px;
+        background: linear-gradient(
+          to right,
+          white 5px,
+          lightgray 5px 50px,
+          darkgray 50px 55px
+        );
+        border-bottom: 5px solid darkgray;
+      }
+      /* eyes */
+      .head::before,
+      .head::after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        width: 5px;
+        height: 15px;
+        background: black;
+        z-index: 10;
+        animation: blink 3000ms infinite;
+        transform-origin: center;
+      }
+      @keyframes blink {
+        0%,
+        20% {
+          transform: scaleY(1);
+        }
+        10% {
+          transform: scaleY(0.01);
+        }
+      }
+      .head::before {
+        left: 10px;
+      }
+      .head::after {
+        right: 10px;
+      }
+
+      /* body */
+      .body {
+        position: relative;
+        width: 40px;
+        height: 30px;
+        background: linear-gradient(lightgray 70%, darkgray 70%);
+        border: 5px solid black;
+      }
+      /* hands */
+      .body::before,
+      .body::after {
+        content: '';
+        position: absolute;
+        top: 5px;
+        width: 10px;
+        height: 10px;
+      }
+      /* left hand */
+      .body::before {
+        left: -10px;
+        background: linear-gradient(
+          to top left,
+          white 50%,
+          transparent 50% 50%
+        );
+
+        /* upper shadow for right hand. cannot set on the same hand because of transparent background */
+        box-shadow: 45px 0 0 -5px black, 40px -5px 0 -5px black,
+          35px -10px 0 -5px black, 40px 0 0 -5px white, 35px -5px 0 -5px white;
+
+        /* bottom outline */
+        border-right: var(--border) solid black;
+        border-bottom: var(--border) solid black;
+      }
+      /* right hand */
+      .body::after {
+        right: -10px;
+        background: linear-gradient(
+          to bottom left,
+          transparent 50%,
+          white 50% 100%
+        );
+
+        /* upper shadow for left hand */
+        box-shadow: -45px 0 0 -5px black, -40px -5px 0 -5px black,
+          -35px -10px 0 -5px black, -40px 0 0 -5px white,
+          -35px -5px 0 -5px white;
+
+        /* bottom outline */
+        border-left: var(--border) solid black;
+        border-bottom: var(--border) solid black;
+      }
+      /* feet */
+      .feet {
+        position: relative;
+        width: 40px;
+      }
+      .feet::before,
+      .feet::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        width: 5px;
+        height: 5px;
+        background: darkgray;
+        border: var(--border) solid black;
+        border-top: none;
+      }
+      /* right foot */
+      .feet::after {
+        right: 0;
+      }
+
+      /* walk animation - feet */
+      .character.moving .feet::before {
+        animation: walking-leftFoot 800ms infinite steps(1, end);
+      }
+      .character.moving .feet::after {
+        animation: walking-rightFoot 800ms infinite steps(1, end);
+      }
+      @keyframes walking-leftFoot {
+        0%,
+        100% {
+          top: -9px;
+        }
+        50% {
+          top: -5px;
+        }
+      }
+      @keyframes walking-rightFoot {
+        0%,
+        100% {
+          top: -5px;
+        }
+        50% {
+          top: -9px;
+        }
+      }
+
+      /* walk animation - hands */
+      .character.moving .body::before {
+        background: white;
+        box-shadow: none;
+        animation: walking-leftHand 800ms infinite steps(1, end);
+      }
+      .character.moving .body::after {
+        background: white;
+        box-shadow: none;
+        animation: walking-rightHand 800ms infinite steps(1, end);
+      }
+      @keyframes walking-leftHand {
+        0%,
+        100% {
+          top: 5px;
+          z-index: -1;
+        }
+        50% {
+          top: 0;
+          z-index: 10;
+        }
+      }
+      @keyframes walking-rightHand {
+        0%,
+        100% {
+          top: 0;
+          z-index: 10;
+        }
+        50% {
+          top: 5px;
+          z-index: -1;
+        }
+      }
+
+      /* walk animation - head */
+      .character.moving .head {
+        z-index: 9;
+        animation: walking-head 400ms infinite steps(1, end);
+      }
+      @keyframes walking-head {
+        0%,
+        100% {
+          transform: translateY(5px);
+        }
+        50% {
+          transform: translateY(0px);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- character -->
+    <div class="character">
+      <!-- head -->
+      <div class="head">
+        <span class="forehead"></span>
+        <div class="faceShadow"></div>
+      </div>
+      <!-- body -->
+      <div class="body"></div>
+      <!-- feet -->
+      <div class="feet"></div>
+    </div>
+
+    <script>
+      const character = document.querySelector('.character');
+
+      let movingInterval;
+
+      let moveUp = false;
+      let moveDown = false;
+      let moveLeft = false;
+      let moveRight = false;
+
+      setInterval(() => {
+        if (moveUp) {
+          const { top } = character.getBoundingClientRect();
+          if (top === 0) return;
+          character.style.top = top - 0.5 + 'px';
+        }
+
+        if (moveDown) {
+          const { top, bottom } = character.getBoundingClientRect();
+          if (bottom === document.body.getBoundingClientRect().bottom) return;
+          character.style.top = top + 0.5 + 'px';
+        }
+
+        if (moveLeft) {
+          const { left } = character.getBoundingClientRect();
+          if (left === document.body.getBoundingClientRect().left) return;
+          character.style.left = left - 0.5 + 'px';
+        }
+
+        if (moveRight) {
+          const { left, right } = character.getBoundingClientRect();
+          if (right === document.body.getBoundingClientRect().right) return;
+          character.style.left = left + 0.5 + 'px';
+        }
+      }, 0);
+
+      document.addEventListener('keydown', (e) => {
+        if (!e.key.includes('Arrow')) return;
+
+        character.classList.add('moving');
+
+        if (e.key === 'ArrowUp') {
+          moveUp = true;
+        }
+
+        if (e.key === 'ArrowDown') {
+          moveDown = true;
+        }
+
+        if (e.key === 'ArrowLeft') {
+          moveLeft = true;
+        }
+
+        if (e.key === 'ArrowRight') {
+          moveRight = true;
+        }
+      });
+
+      document.addEventListener('keyup', (e) => {
+        if (!e.key.includes('Arrow')) return;
+
+        if (e.key === 'ArrowUp') moveUp = false;
+
+        if (e.key === 'ArrowDown') moveDown = false;
+
+        if (e.key === 'ArrowLeft') moveLeft = false;
+
+        if (e.key === 'ArrowRight') moveRight = false;
+
+        // if any arrow key is pressed, do not remove walking animation
+        if (moveUp || moveDown || moveLeft || moveRight) return;
+        character.classList.remove('moving');
+      });
+    </script>
+  </body>
+</html>
