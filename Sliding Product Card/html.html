@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sliding Product Card</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background: linear-gradient(#4ca7ea 50%, white 50%);
+      }
+
+      .card {
+        position: relative;
+        display: flex;
+        width: 300px;
+        height: 370px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        transition: 500ms;
+      }
+      .card:hover {
+        width: 650px;
+      }
+
+      .product {
+        display: grid;
+        place-items: center;
+        width: 300px;
+        height: 370px;
+        background: white;
+        overflow: hidden;
+        z-index: 10;
+      }
+      img {
+        width: 270px;
+        height: 370px;
+        object-fit: contain;
+        transition: 500ms;
+      }
+      .card:hover img {
+        transform: translateX(-20px) rotate(-45deg);
+      }
+
+      .details {
+        position: absolute;
+        height: 370px;
+        left: 0;
+        width: 350px;
+        padding: 3rem 2rem;
+        background: #4ca7ea;
+        color: white;
+        transition: 500ms;
+      }
+      .card:hover .details {
+        left: 300px;
+        z-index: 2;
+      }
+
+      .description,
+      .size {
+        margin-top: 2rem;
+      }
+
+      .description h4,
+      .size h4 {
+        margin-bottom: 1rem;
+      }
+
+      .details p,
+      .size span {
+        font-weight: 200;
+      }
+
+      .size span {
+        padding: 0.5rem;
+        border: 2px solid white;
+        margin-right: 1rem;
+        cursor: pointer;
+        transition: 500ms;
+      }
+      .size span:hover {
+        background: white;
+        color: #4ca7ea;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <div class="product">
+        <img src="./shoe.jpg" alt="nike" />
+      </div>
+
+      <div class="details">
+        <div class="title">
+          <h1>NIKE AIR MAX</h1>
+          <p>Men's Shoe</p>
+        </div>
+        <div class="description">
+          <h4>PRODUCT DETAILS</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+        <div class="size">
+          <h4>SIZE</h4>
+          <div class="sizes">
+            <span>36</span><span>38</span><span>40</span>
+            <span>42</span>
+            <span>44</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
