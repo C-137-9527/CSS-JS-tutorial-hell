@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculator app</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background: #3b4664;
+      }
+
+      .calculator {
+        width: 350px;
+        height: 380px;
+        background: #3b4664;
+      }
+
+      .screen {
+        margin: 1rem auto;
+        padding-right: 1rem;
+        width: 90%;
+        height: 80px;
+        background: #181f32;
+        border-radius: 5px;
+        color: white;
+        font-weight: 900;
+        font-size: 2rem;
+        line-height: 80px;
+        text-align: right;
+      }
+      .keys {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: auto;
+        width: 90%;
+        height: 250px;
+        background: #252d44;
+        border-radius: 5px;
+      }
+      .key {
+        flex-basis: 65px;
+        padding: 0.5rem;
+        border-radius: 5px;
+        border-bottom: hsl(32, 26%, 69%) solid 3px;
+        background: #eae3db;
+        font-weight: 600;
+        text-align: center;
+        cursor: pointer;
+      }
+      .longKey {
+        flex-basis: 140px;
+      }
+
+      .key-del {
+        border-bottom: hsl(224, 21%, 30%) solid 3px;
+        background: #647299;
+        color: white;
+      }
+      .key-reset {
+        border-bottom: hsl(224, 21%, 30%) solid 3px;
+        background: #647299;
+        color: white;
+      }
+      .key-equal {
+        border-bottom: hsl(6, 64%, 30%) solid 3px;
+        background: #d13f30;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="calculator">
+      <div class="screen"></div>
+      <div class="keys">
+        <span class="key">7</span>
+        <span class="key">8</span>
+        <span class="key">9</span>
+        <span class="key key-del">DEL</span>
+        <span class="key">4</span>
+        <span class="key">5</span>
+        <span class="key">6</span>
+        <span class="key">+</span>
+        <span class="key">1</span>
+        <span class="key">2</span>
+        <span class="key">3</span>
+        <span class="key">-</span>
+        <span class="key">.</span>
+        <span class="key">0</span>
+        <span class="key">/</span>
+        <span class="key">*</span>
+        <span class="key longKey key-reset">RESET</span>
+        <span class="key longKey key-equal">=</span>
+      </div>
+    </div>
+
+    <!-- JS -->
+    <script>
+      const screen = document.querySelector('.screen');
+      const keys = document.querySelectorAll('.key');
+
+      let currentNumber;
+      let prevNumber;
+      let operation;
+      let result;
+
+      const calculate = () => {
+        if (operation === '+') result = prevNumber + +currentNumber;
+
+        if (operation === '-') result = prevNumber - +currentNumber;
+
+        if (operation === '*') result = prevNumber * +currentNumber;
+
+        if (operation === '/') result = prevNumber / +currentNumber;
+
+        currentNumber = '';
+        prevNumber = '';
+        operation = '';
+      };
+
+      keys.forEach((key) => {
+        key.addEventListener('click', () => {
+          const keyPressed = key.textContent;
+          currentNumber = screen.textContent;
+
+          // reset
+          if (keyPressed === 'RESET') {
+            prevNumber = '';
+            operation = '';
+            result = '';
+
+            screen.textContent = '';
+
+            return;
+          }
+
+          // delete
+          if (keyPressed === 'DEL') {
+            screen.textContent = currentNumber.slice(
+              0,
+              currentNumber.length - 1
+            );
+            return;
+          }
+
+          // operations
+          if (
+            keyPressed === '+' ||
+            keyPressed === '-' ||
+            keyPressed === '*' ||
+            keyPressed === '/'
+          ) {
+            if (prevNumber && currentNumber) {
+              calculate();
+              screen.textContent = result;
+
+              return;
+            }
+
+            prevNumber = +currentNumber;
+            currentNumber = '';
+
+            operation = keyPressed;
+
+            screen.textContent = '';
+
+            return;
+          }
+
+          // equal
+          if (keyPressed === '=' && prevNumber && currentNumber && operation) {
+            calculate();
+
+            screen.textContent = result;
+
+            return;
+          }
+
+          // clicking on numbers
+          if (keyPressed !== '=')
+            screen.textContent = screen.textContent + keyPressed;
+        });
+      });
+    </script>
+  </body>
+</html>
