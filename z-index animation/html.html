@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>z index animation</title>
+
+    <style>
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background: #111;
+      }
+
+      .cover {
+        display: grid;
+        place-items: center;
+        width: 250px;
+        height: 250px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(30px);
+      }
+
+      section {
+        display: grid;
+        place-items: center;
+      }
+
+      section::before {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: #73dc4b;
+        border-radius: 50%;
+        animation: swingCircle 4s infinite ease-in-out;
+      }
+      @keyframes swingCircle {
+        0%,
+        100% {
+          transform: translate(190%, -190%);
+        }
+        50% {
+          transform: translate(-190%, 190%);
+        }
+        0%,
+        90% {
+          z-index: 1;
+        }
+        10%,
+        100% {
+          z-index: -1;
+        }
+      }
+
+      section::after {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: #fff;
+        animation: swingSquare 4s infinite ease-in-out;
+      }
+      @keyframes swingSquare {
+        0%,
+        100% {
+          transform: translate(-190%, 190%);
+        }
+        50% {
+          transform: translate(190%, -190%);
+        }
+        0%,
+        90% {
+          z-index: -1;
+        }
+        10%,
+        100% {
+          z-index: 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <article class="cover"></article>
+    </section>
+  </body>
+</html>
