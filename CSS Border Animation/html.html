@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Border Animation</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background: #162052;
+      }
+
+      .box {
+        display: grid;
+        place-items: center;
+        position: relative;
+        width: 400px;
+        height: 400px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      .box::before {
+        content: '';
+        position: absolute;
+        inset: -10px 140px;
+        background: linear-gradient(315deg, #00ccff, #d400d4);
+        transition: 500ms;
+        animation: spin 4000ms linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .box::after {
+        content: '';
+        position: absolute;
+        inset: 5px;
+        background: #162052;
+        border-radius: 50%;
+      }
+
+      /* img */
+      img {
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        z-index: 99;
+        object-fit: cover;
+        transition: 500ms;
+      }
+
+      /* details */
+      .details {
+        position: absolute;
+        z-index: 98;
+        color: white;
+        text-align: center;
+        line-height: 1.5;
+        font-size: 1.3rem;
+      }
+
+      .details p {
+        font-size: 1.3rem;
+      }
+
+      button {
+        padding: 10px;
+        color: black;
+        border: none;
+        border-radius: 30px;
+        margin-top: 10px;
+      }
+
+      /* hover */
+      .box:hover::before {
+        inset: -20px 0px;
+        animation: none;
+      }
+      .box:hover img {
+        opacity: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <img
+        src="https://dare.voylla.com/blog/wp-content/uploads/2017/04/Model-blog-03.jpg"
+        alt=""
+      />
+
+      <div class="details">
+        <h1>ALVIN ZHANG</h1>
+        <p>UI/UX DESIGNER</p>
+        <button>HIER ME</button>
+      </div>
+    </div>
+  </body>
+</html>
