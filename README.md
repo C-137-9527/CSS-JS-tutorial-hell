@@ -1,2 +1,2 @@
-practice projects
+follow along tutorial projects
  
