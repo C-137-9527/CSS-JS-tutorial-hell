@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button Hover</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background-color: #2d2d2d;
+        font-family: sans-serif;
+      }
+
+      /* container */
+      .container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        height: 90px;
+        width: 270px;
+        background-color: #4c4c4c;
+        cursor: pointer;
+      }
+      .container::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: hsl(220, 100%, 60%);
+        scale: 0 1;
+        transition: scale 500ms ease-out;
+        transform-origin: right;
+      }
+
+      /* verticle line, arrow */
+      span {
+        position: relative;
+        height: 50px;
+        width: 5px;
+        background-color: yellow;
+        transition: height 500ms, width 500ms;
+        transition-delay: 250ms, 0s;
+        transform-origin: right;
+      }
+      span::before,
+      span::after {
+        content: '';
+        position: absolute;
+        right: 2px;
+        height: 5px;
+        width: 20px;
+        background-color: transparent;
+      }
+
+      /* title */
+      h1 {
+        position: relative;
+        font-weight: 300;
+        color: whitesmoke;
+      }
+
+      /* animation: container */
+      .container:hover::before {
+        scale: 1;
+        transform-origin: left;
+      }
+
+      /* animation: arrow */
+      .container:hover span {
+        height: 5px;
+        width: 50px;
+        transition-delay: 0s, 250ms;
+      }
+      .container:hover span::before {
+        background-color: yellow;
+        rotate: 45deg;
+        translate: 0.5px 0;
+        transition: background-color 600ms, rotate 600ms;
+        transition-delay: 400ms;
+        transform-origin: right;
+      }
+      .container:hover span::after {
+        background-color: yellow;
+        rotate: -45deg;
+        translate: 0.5px 0;
+        transition: background-color 600ms, rotate 600ms;
+        transition-delay: 400ms;
+        transform-origin: right;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <span></span>
+      <h1>EXPLORE</h1>
+    </div>
+  </body>
+</html>
