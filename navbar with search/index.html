@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/793522ef06.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>nav</title>
+
+    <!-- css -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: sans-serif;
+        min-height: 100vh;
+        background-color: lightgrey;
+        font-weight: 300;
+      }
+
+      /* nav */
+      nav {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: #fff;
+        box-shadow: 0 0 20px grey;
+        overflow: hidden;
+      }
+
+      ul {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+      li {
+        position: relative;
+        list-style: none;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+      li:not(:last-of-type)::before {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        height: 2px;
+        width: 100%;
+        background-color: #2d2d2d;
+        scale: 0 1;
+        transform-origin: right;
+        transition: scale 300ms;
+      }
+      li:hover::before {
+        scale: 1;
+        transform-origin: left;
+      }
+
+      /* searchbar */
+      .searchBar {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        width: 100%;
+        height: 100%;
+        translate: 100% 0;
+        opacity: 0;
+        transition: translate 500ms ease-in, opacity 500ms ease-in;
+      }
+      input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-bottom: 1px solid darkgray;
+        outline: none;
+        letter-spacing: 2px;
+      }
+
+      i {
+        position: relative;
+        z-index: 100;
+        cursor: pointer;
+        transition: translate 500ms ease-in;
+      }
+      i.fa-xmark {
+        position: absolute;
+        right: 40px;
+        font-size: 1.3rem;
+      }
+
+      /* animations */
+      i.shiftSearchIcon {
+        translate: -30px 0;
+      }
+      .searchBar.showSearchBar {
+        translate: 0;
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <h1>LOGO</h1>
+        <ul>
+          <li>home</li>
+          <li>about</li>
+          <li>services</li>
+          <li>blog</li>
+          <li>contact</li>
+          <li><i class="fa-solid fa-magnifying-glass"></i></li>
+          <div class="searchBar">
+            <input type="text" placeholder="Search Here..." />
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+        </ul>
+      </nav>
+    </header>
+
+    <script>
+      const searchBtn = document.querySelector('.fa-magnifying-glass');
+      const searchBar = document.querySelector('.searchBar');
+      const closeBtn = document.querySelector('.fa-xmark ');
+
+      searchBtn.addEventListener('click', () => {
+        searchBtn.classList.add('shiftSearchIcon');
+        searchBar.classList.add('showSearchBar');
+      });
+
+      closeBtn.addEventListener('click', () => {
+        searchBtn.classList.remove('shiftSearchIcon');
+        searchBar.classList.remove('showSearchBar');
+      });
+    </script>
+  </body>
+</html>
