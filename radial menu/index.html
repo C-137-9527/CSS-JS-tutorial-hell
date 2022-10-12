@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script
+      src="https://kit.fontawesome.com/793522ef06.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Radial Menu</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background-color: #2f363e;
+      }
+
+      /* menu */
+      ul {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 280px;
+        height: 280px;
+      }
+      li {
+        position: absolute;
+        left: 0;
+        list-style: none;
+        rotate: 0deg;
+        translate: 110px 0;
+        transform-origin: 140px;
+        transition: 500ms ease-in;
+      }
+      a {
+        display: grid;
+        place-items: center;
+        width: 60px;
+        height: 60px;
+        border: 2px solid var(--clr);
+        border-radius: 50%;
+        color: var(--clr);
+        font-size: 1.5rem;
+        transition: 300ms ease-in;
+        rotate: calc(360deg / 8 * var(--i) * -1);
+      }
+
+      .toggle {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        width: 60px;
+        height: 60px;
+        background-color: #2f363e;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        color: #fff;
+        cursor: pointer;
+        z-index: 999;
+        font-size: 2rem;
+        transition: rotate 1250ms;
+      }
+
+      /* animations */
+      ul.active .toggle {
+        rotate: 315deg;
+      }
+
+      ul.active li {
+        rotate: calc(360deg / 8 * var(--i));
+      }
+
+      li:hover a {
+        color: #333;
+        background-color: var(--clr);
+        border: none;
+        box-shadow: 0 0 10px var(--clr), 0 0 30px var(--clr),
+          0 0 60px var(--clr);
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul>
+      <!-- menu -->
+      <div class="toggle"><i class="fas fa-plus"></i></div>
+
+      <!-- home -->
+      <li style="--i: 0; --clr: #ff2972">
+        <a href="#"><i class="fas fa-home"></i></a>
+      </li>
+
+      <!-- user -->
+      <li style="--i: 1; --clr: #fee800">
+        <a href="#"><i class="fas fa-user"></i></a>
+      </li>
+
+      <!-- setting -->
+      <li style="--i: 2; --clr: #04fc43">
+        <a href="#"><i class="fas fa-wrench"></i></a>
+      </li>
+
+      <!-- mail -->
+      <li style="--i: 3; --clr: #fe00f1">
+        <a href="#"><i class="fas fa-mail-bulk"></i></a>
+      </li>
+
+      <!-- key -->
+      <li style="--i: 4; --clr: #00b0fe">
+        <a href="#"><i class="fas fa-key"></i></a>
+      </li>
+
+      <!-- camera -->
+      <li style="--i: 5; --clr: #fea600">
+        <a href="#"><i class="fas fa-camera"></i></a>
+      </li>
+
+      <!-- game -->
+      <li style="--i: 6; --clr: #a529ff">
+        <a href="#"><i class="fas fa-gamepad"></i></a>
+      </li>
+
+      <!-- video -->
+      <li style="--i: 7; --clr: #01bdab">
+        <a href="#"><i class="fas fa-video"></i></a>
+      </li>
+    </ul>
+
+    <!-- js -->
+    <script>
+      const toggle = document.querySelector('.toggle');
+      const menu = document.querySelector('ul');
+
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>
