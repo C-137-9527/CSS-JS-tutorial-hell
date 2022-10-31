@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halloween LED</title>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fruktur&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        position: relative;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background-color: #0a051d;
+      }
+
+      /* images */
+      img {
+        position: absolute;
+        max-width: 100%;
+      }
+      .web {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 100;
+      }
+      .pumpkin {
+        width: 150px;
+      }
+      .pumpkin2 {
+        left: 30px;
+        bottom: 100px;
+      }
+      .pumpkin1 {
+        top: 130px;
+        right: 30px;
+      }
+      .spider {
+        top: -300px;
+        width: 100px;
+        z-index: 101;
+      }
+
+      /* title */
+      h1 {
+        position: relative;
+        color: hsl(0 100% 100% / 0.1);
+        font-family: 'Fruktur';
+        font-size: 7rem;
+      }
+      h1::before {
+        content: 'Halloween';
+        position: absolute;
+        color: #f4ab33;
+        text-shadow: 0 0 10px #f4ab33, 0 0 30px #f4ab33, 0 0 60px #f4ab33,
+          0 0 100px #f4ab33;
+      }
+
+      /* animations */
+      .pumpkin {
+        animation: upDown 1300ms infinite ease-out alternate;
+      }
+      .pumpkin1 {
+        animation-delay: 500ms;
+      }
+      @keyframes upDown {
+        0% {
+          translate: 0 0;
+        }
+        100% {
+          translate: 0 50px;
+        }
+      }
+
+      .spider {
+        animation: upDown2 5000ms infinite;
+      }
+      @keyframes upDown2 {
+        50% {
+          top: 0;
+        }
+        80%,
+        100% {
+          top: -300px;
+        }
+      }
+
+      h1::before {
+        animation: blink 3000ms infinite;
+      }
+      @keyframes blink {
+        10%,
+        30%,
+        40% {
+          opacity: 0;
+        }
+        15%,
+        35%,
+        45% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- web -->
+    <img src="./assets/spiderWeb.png" alt="web" class="web" />
+
+    <!-- pumpkin bottom left -->
+    <img src="./assets/pumpkin02.png" alt="pumpkin" class="pumpkin2 pumpkin" />
+
+    <!-- pumpkin top right -->
+    <img src="./assets/pumpkin01.png" alt="pumpkin" class="pumpkin1 pumpkin" />
+
+    <!-- spider -->
+    <img src="./assets/spider.png" alt="spider" class="spider" />
+
+    <h1>Halloween</h1>
+  </body>
+</html>
