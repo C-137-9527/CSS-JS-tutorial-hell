@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>change color theme css only</title>
+
+    <style>
+      :root {
+        --crl-theme: #2d2d2d;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background-color: var(--crl-theme);
+      }
+
+      fieldset {
+        padding: 2rem 3.5rem;
+        background-color: whitesmoke;
+        border: none;
+        border-radius: 10px;
+      }
+
+      h1 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #2d2d2d;
+      }
+
+      div {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      input {
+        appearance: none;
+        margin-left: 5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      input#coral {
+        background-color: coral;
+      }
+      input#lightgreen {
+        background-color: lightgreen;
+      }
+      input#skyblue {
+        background-color: skyblue;
+      }
+      input#violet {
+        background-color: violet;
+      }
+      input#burlywood {
+        background-color: burlywood;
+      }
+
+      /* input on select */
+      input:checked {
+        outline: 2px solid #2d2d2d;
+        outline-offset: 2px;
+      }
+
+      /* change color theme */
+      :root:has(input#coral:checked) {
+        --crl-theme: coral;
+      }
+
+      :root:has(input#lightgreen:checked) {
+        --crl-theme: lightgreen;
+      }
+
+      :root:has(input#skyblue:checked) {
+        --crl-theme: skyblue;
+      }
+
+      :root:has(input#violet:checked) {
+        --crl-theme: violet;
+      }
+
+      :root:has(input#burlywood:checked) {
+        --crl-theme: burlywood;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form>
+      <fieldset>
+        <h1>Choose a color theme</h1>
+        <div>
+          <input type="radio" name="colorTheme" id="coral" />
+          <input type="radio" name="colorTheme" id="lightgreen" />
+          <input type="radio" name="colorTheme" id="skyblue" />
+          <input type="radio" name="colorTheme" id="violet" />
+          <input type="radio" name="colorTheme" id="burlywood" />
+        </div>
+      </fieldset>
+    </form>
+  </body>
+</html>
