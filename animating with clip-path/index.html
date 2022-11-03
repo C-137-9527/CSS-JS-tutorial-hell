@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>animating with clip-path</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        position: relative;
+        height: 110vh;
+        background-color: #3d3d3d;
+      }
+
+      /* background */
+      .default,
+      .green,
+      .blue {
+        display: grid;
+        place-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        transition: 300ms linear;
+      }
+
+      .green {
+        width: 100vw;
+        height: 100vh;
+        background-color: lightgreen;
+      }
+
+      .blue {
+        width: 100vw;
+        height: 100vh;
+        background-color: skyblue;
+      }
+
+      /* text */
+      h1 {
+        position: absolute;
+        font-family: 'Lucida Grande', 'Lucida Sans Unicode';
+        font-size: 13rem;
+      }
+
+      .default h1 {
+        color: white;
+      }
+      .green h1 {
+        color: lightgreen;
+        -webkit-text-stroke: 3px #3d3d3d;
+      }
+
+      .blue h1 {
+        color: #3d3d3d;
+        -webkit-text-stroke: 3px white;
+      }
+
+      /* clip-path */
+      .green {
+        clip-path: circle(0% at 0 0);
+      }
+      .blue {
+        clip-path: circle(0% at 100% 100%);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="default">
+      <h1>Magic</h1>
+    </div>
+    <div class="green">
+      <h1>Magic</h1>
+    </div>
+    <div class="blue">
+      <h1>Magic</h1>
+    </div>
+
+    <script>
+      const green = document.querySelector('.green');
+      const blue = document.querySelector('.blue');
+
+      window.addEventListener('scroll', (e) => {
+        let i = window.scrollY;
+
+        green.style.clipPath = `circle(${i}% at 0 0 )`;
+        blue.style.clipPath = `circle(${i}% at 100% 100% )`;
+      });
+    </script>
+  </body>
+</html>
