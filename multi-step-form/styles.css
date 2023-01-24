@@ -1,0 +1,163 @@
+/* fonts */
+@font-face {
+  font-family: Ubuntu-bold;
+  src: url('./assets/fonts/Ubuntu-Bold.ttf');
+}
+
+@font-face {
+  font-family: Ubuntu-Medium;
+  src: url('./assets/fonts/Ubuntu-Medium.ttf');
+}
+
+@font-face {
+  font-family: Ubuntu-Regular;
+  src: url('./assets/fonts/Ubuntu-Regular.ttf');
+}
+
+/* general styles */
+:root {
+  --border-radius: 5px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: inherit;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  background-color: lightblue;
+  font-family: 'Ubuntu-Regular';
+}
+
+button,
+li p {
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  width: 700px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: var(--border-radius);
+}
+
+/* sidebar */
+ul {
+  background-image: url('./assets/images/bg-sidebar-desktop.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px;
+}
+
+/* steps */
+li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  list-style: none;
+  padding: 20px;
+  color: #fff;
+  font-family: 'Ubuntu-Medium';
+  text-transform: uppercase;
+}
+
+/* step number */
+li span {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  height: 2.5rem;
+  aspect-ratio: 1 / 1;
+  border: 2px solid #fff;
+}
+
+/* step description */
+li p {
+  position: relative;
+}
+
+li p::before {
+  content: attr(data-step);
+  position: absolute;
+  bottom: 100%;
+  color: hsl(255 100% 100% / 0.7);
+  font-family: 'Ubuntu-Regular';
+  font-size: 0.8rem;
+}
+
+/* form */
+form {
+  height: 80vh;
+  font-family: 'Ubuntu-Regular';
+  /* overflow: hidden; */
+}
+
+form *:not(input, .title p) {
+  text-transform: capitalize;
+}
+
+form *:not(input) {
+  text-transform: capitalize;
+}
+
+form article {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  height: 100%;
+  padding: 30px 60px;
+}
+
+/* form__title */
+form .title h2 {
+  font-family: 'Ubuntu-Bold';
+  font-size: 2rem;
+}
+
+form .title p {
+  font-family: 'Ubuntu-Regular';
+  color: rgb(149, 148, 148);
+  text-transform: none;
+}
+
+/* step 1 */
+form article:first-child .inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+form article:first-child .inputs input {
+  margin-top: 5px;
+  padding: 8px;
+  width: 100%;
+  border: 1px solid rgb(149, 148, 148);
+}
+
+form article:first-child button {
+  align-self: flex-end;
+  padding: 8px;
+  border: none;
+  background-color: #174a8b;
+  color: #fff;
+  font-family: 'Ubuntu-Medium';
+}
+
+/* step 2 */
+form article:nth-child(2) .plans {
+  display: flex;
+  gap: 10px;
+}
+
+form article:nth-child(2) .plan {
+  padding: 1rem;
+  border: 1px solid blueviolet;
+  width: 100%;
+}

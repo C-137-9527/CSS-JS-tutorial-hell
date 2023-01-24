@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>multi-step form</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js"></script>
+  </head>
+
+  <body>
+    <main>
+      <!-- sidebar -->
+      <ul>
+        <li>
+          <span>1</span>
+          <p data-step="step-1">your info</p>
+        </li>
+        <li>
+          <span>2</span>
+          <p data-step="step-2">select plan</p>
+        </li>
+        <li>
+          <span>3</span>
+          <p data-step="step-3">add-ons</p>
+        </li>
+        <li>
+          <span>4</span>
+          <p data-step="step-4">summary</p>
+        </li>
+      </ul>
+
+      <!-- form -->
+      <form>
+        <!-- step 1 -->
+        <article>
+          <div class="title">
+            <h2>personal info</h2>
+            <p>Please provide your name, email address, and phone number.</p>
+          </div>
+
+          <div class="inputs">
+            <label> name<input type="text" placeholder="Jane Doe" /></label>
+
+            <label
+              >email address
+              <input id="email" type="email" placeholder="example@email.com"
+            /></label>
+
+            <label
+              >phone number
+              <input id="phone" type="tel" placeholder="e.g. +1 234 567 890"
+            /></label>
+          </div>
+
+          <button type="button">next step</button>
+        </article>
+
+        <!-- step 2 -->
+        <article>
+          <div class="title">
+            <h2>select your plan</h2>
+            <p>You have the option of monthly or yearly billing.</p>
+          </div>
+
+          <div class="plans">
+              <div class="plan">
+                <img src="./assets/images/icon-arcade.svg" />
+                <div>
+                  <p>Arcade</p>
+                  <p>$9/mo</p>
+                </div>
+              </div>
+
+              <div class="plan">
+                <img src="./assets/images/icon-advanced.svg" />
+                <div>
+                  <p>Advanced</p>
+                  <p>$12/mo</p>
+                </div>
+              </div>
+
+              <div class="plan">
+                <img src="./assets/images/icon-pro.svg" />
+                <div>
+                  <p>Pro</p>
+                  <p>$15/mo</p>
+                </div>
+              </div>
+            </div>
+
+            <div class='paymentMethod'>
+              <p>monthly</p>
+              <input type="checkbox" />
+              <p>yearly</p>
+            </div>
+          </div>
+
+          <div class="button">
+            <button type="button">go back</button>
+            <button type="button">next step</button>
+          </div>
+        </article>
+
+        <!-- step 3 -->
+        <article></article>
+
+        <!-- step 4 -->
+        <article></article>
+      </form>
+    </main>
+  </body>
+</html>
